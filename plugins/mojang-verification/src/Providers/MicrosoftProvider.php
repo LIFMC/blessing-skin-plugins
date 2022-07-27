@@ -76,7 +76,7 @@ class MicrosoftProvider extends AbstractProvider
         if (Arr::exists($response, 'error')) {
             // UNAUTHORIZED
             Log::channel('mojang-verification')->info("User [$user->email] authenticate with Minecraft failed.", compact('response'));
-            abort(500);
+            abort(500, trans('GPlane\Mojang::bind.failed.other'));
         }
 
         $minecraft_access_token = $response['access_token'];
