@@ -72,7 +72,7 @@ class AccountService
 
     public function bindAccount(User $user, $profile)
     {
-		// 不再迁移角色
+		// 取消迁移角色
         // $this->bindPlayers($user, $profile);
 
         MojangVerification::updateOrCreate(

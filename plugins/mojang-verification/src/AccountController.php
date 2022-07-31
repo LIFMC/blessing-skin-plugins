@@ -38,6 +38,12 @@ class AccountController extends Controller
         }
 
         $userProfile = Socialite::driver('microsoft')->user();
+		
+		$email = $userProfile->email;
+		
+		if (empty($email) && $email === $user->email) {
+            abort(403, 'You must use same email to verification.');
+        }
 
         $accountService->bindAccount($user, $userProfile);
 
