@@ -41,9 +41,13 @@ class AccountController extends Controller
 		
 		$email = $userProfile->email;
 		
-		if (empty($email) && $email === $user->email) {
-            abort(403, 'You must use same email to verification.');
+        if (empty($email)) {
+            abort(500, 'Unsupported OAuth Server which does not provide email.');
         }
+		
+		if ($email != $user->email){
+            abort(403, 'You must use same email to verification.');
+		}
 
         $accountService->bindAccount($user, $userProfile);
 
