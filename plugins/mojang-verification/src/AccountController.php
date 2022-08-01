@@ -2,6 +2,7 @@
 
 namespace GPlane\Mojang;
 
+use App\Models\Player;
 use Composer\CaBundle\CaBundle;
 use DB;
 use Illuminate\Http\Request;
@@ -39,14 +40,14 @@ class AccountController extends Controller
 
         $userProfile = Socialite::driver('microsoft')->user();
 		
-		$email = $userProfile->email;
+		$player = Player::where('name', $userProfile->name)->first();
 		
-        if (empty($email)) {
-            abort(500, 'Unsupported OAuth Server which does not provide email.');
-        }
-		
-		if ($email != $user->email){
-            abort(403, 'You must use same email to verification.');
+		if ($player) {
+			if ($player->uid != $user->uid) {
+				Log::channel('mojang-verification')->info("User $player->name [$user->email] is try to finish verification with name $userProfile->name failed");
+				abort(403, 'You must have added your online player with same name to verification.');
+			}
+			abort(403, 'You don''t have permission to verification, because you don''t own this named player.');
 		}
 
         $accountService->bindAccount($user, $userProfile);
