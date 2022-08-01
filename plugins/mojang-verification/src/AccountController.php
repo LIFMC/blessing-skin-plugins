@@ -47,7 +47,7 @@ class AccountController extends Controller
 				Log::channel('mojang-verification')->info("User $player->name [$user->email] is try to finish verification with name $userProfile->name failed");
 				abort(403, 'You must have added your online player with same name to verification.');
 			}
-			abort(403, 'You don''t have permission to verification, because you don''t own this named player.');
+			abort(403, 'You dont have permission to verification, because you have not own this named player.');
 		}
 
         $accountService->bindAccount($user, $userProfile);
