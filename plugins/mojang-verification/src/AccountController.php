@@ -45,9 +45,8 @@ class AccountController extends Controller
 		if ($player) {
 			if ($player->uid != $user->uid) {
 				Log::channel('mojang-verification')->info("User $player->name [$user->email] is try to finish verification with name $userProfile->name failed");
-				abort(403, 'You must have added your online player with same name to verification.');
+				abort(403, trans('GPlane\Mojang::bind.failed.name-required'));
 			}
-			abort(403, 'You dont have permission to verification, because you have not own this named player.');
 		}
 
         $accountService->bindAccount($user, $userProfile);

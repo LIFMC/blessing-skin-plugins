@@ -1,13 +1,16 @@
 title: 正版绑定
 description: |
   如果您拥有正版 Minecraft 账号，可点击下面的按钮进行验证并绑定。
+  
+  如果您的正版账号对应角色昵称已被占用，您将无法完成正版验证。
 
-  如果验证成功，您将获得正版认证标识，并可获得 :score 积分。
+  如果验证成功，您将获得正版认证标识及正版账号对应的角色，并可获得 :score 积分。
 verify: 验证
 failed:
   rate: 操作过于频繁，请稍后再试。
-  not-purchased: 验证游戏所有权失败。
+  not-purchased: 验证游戏所有权失败，您可能尚未拥有 Minecraft Java 版。
   other: 验证失败，可能是无法连接 Mojang 服务器。
+  name-required: 您的正版账号对应角色昵称已被占用，在您更换角色昵称前您将无法完成正版验证。
 
 notification:
   title: 角色属主更改通知

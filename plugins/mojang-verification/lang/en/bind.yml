@@ -1,6 +1,8 @@
 title: Bind Your Mojang Account
 description: |
   If you have already paid for Minecraft, you could click the button below to bind it.
+  
+  If the name is already occupied, you will not be able to complete the verification.
 
   After passed the verification, you will become a "Pro" user and gain :score score.
 verify: Verify
@@ -8,6 +10,7 @@ failed:
   rate: Operations are too frequent. Please try again later.
   not-purchased: Unable to verify game ownership.
   other: Failed to verify.
+  name-required: The name is already occupied, you will not be able to complete the verification.
 
 notification:
   title: Player Owner Changed
